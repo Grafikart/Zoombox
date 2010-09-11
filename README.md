@@ -40,14 +40,14 @@ Dont hesitate to contact me if you have any other idea of additional links.
 
 ChangeLog
 -------
-* v1.1.0 (14/11/2009)
+** v1.1.0 (14/11/2009) **
 New sourcecode (commented in english)
 New configuration variables
 You can customize the box editing both CSS and HTML Structure.
 You can now launch Zoombox with the function zoombox.open(url,largeur,hauteur)
-* v1.0.1 (22/12/2008)
+** v1.0.1 (22/12/2008) **
 Keyboard is now supported (you can use arrows to switch between images in a galery and echap to close Zoombox)
-* v1.0.0 (09/03/2008) :
+** v1.0.0 (09/03/2008) : **
 Class Zoombox created
 Resizing pictures when the picture height is too big
 
