@@ -9,19 +9,19 @@ Set up
 First, place the whole directory "Zoombox" at the root of your website :
 
 1- Zoombox uses 2 different Javascript scripts that you will have to import in this exact same order (in <head> or just before </body>)
-	&lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/jquery.js&quot;&gt;&lt;/script&gt;
-	&lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/zoombox.js&quot;&gt;&lt;/script&gt;
+	<script type="text/javascript" src="/zoombox/jquery.js"></script>
+	<script type="text/javascript" src="/zoombox/zoombox.js"></script>
 2- Link the CSS file to your page in the <head>
 	<link href="/zoombox/zoombox.css" rel="stylesheet" type="text/css" media="screen" />
 
 How it works ?
 -------
 1- add rel="zoombox" onto your links in order to add the Zoombox effect
-	&lt;a href=&quot;http://www.youtube.com/watch?v=8oejjWGFs6o&quot; title=&quot;Session 2006&quot; rel=&quot;zoombox&quot;&gt;Lien&lt;/a&gt;
+	<a href="http://www.youtube.com/watch?v=8oejjWGFs6o" title="Session 2006" rel="zoombox">Link</a>
 2- if you would like a group of pictures, you will have to mention a group name in brackets
-	&lt;a href=&quot;images/image-1.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 1&lt;/a&gt;
-	&lt;a href=&quot;images/image-2.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 2&lt;/a&gt;
-	&lt;a href=&quot;images/image-3.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 3&lt;/a&gt;
+	<a href="images/image-1.jpg" rel="zoombox[holidays]">image 1</a>
+	<a href="images/image-2.jpg" rel="zoombox[holidays]">image 2</a>
+	<a href="images/image-3.jpg" rel="zoombox[holidays]">image 3</a>
 3- You can also mention a length and a height to the Box, rel="zoombox 800 600", in case of a link which is not a picture
 
 Use
@@ -31,12 +31,12 @@ Use
 * FLV (An FLV player has been added to the installation file)
 * Quicktime links: Mov or MP4
 * WMV links
-* Dailymotion videos : du type http://www.dailymotion.com/video/x1xhl1_jojodemarrages_creation
+* Dailymotion videos : http://www.dailymotion.com/video/x1xhl1_jojodemarrages_creation
 * Vimeo links: http://www.vimeo.com/752791
 * Youtube links: http://fr.youtube.com/watch?v=8oejjWGFs6o
 * On any other links where the iframe system is being used.
 
-Don't hesitate to contact me if you have any other idea of additional links.
+Dont hesitate to contact me if you have any other idea of additional links.
 
 ChangeLog
 -------
