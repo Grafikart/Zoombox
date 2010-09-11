@@ -8,21 +8,21 @@ Set up
 
 First, place the whole directory "Zoombox" at the root of your website :
 
-* Zoombox uses 2 different Javascript scripts that you will have to import in this exact same order (in <head> or just before </body>)
+1- Zoombox uses 2 different Javascript scripts that you will have to import in this exact same order (in <head> or just before </body>)
 	&lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/jquery.js&quot;&gt;&lt;/script&gt;
 	&lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/zoombox.js&quot;&gt;&lt;/script&gt;
-* Link the CSS file to your page in the <head>
+2- Link the CSS file to your page in the <head>
 	<link href="/zoombox/zoombox.css" rel="stylesheet" type="text/css" media="screen" />
 
 How it works ?
 -------
-* add rel="zoombox" onto your links in order to add the Zoombox effect
+1- add rel="zoombox" onto your links in order to add the Zoombox effect
 	&lt;a href=&quot;http://www.youtube.com/watch?v=8oejjWGFs6o&quot; title=&quot;Session 2006&quot; rel=&quot;zoombox&quot;&gt;Lien&lt;/a&gt;
-* if you would like a group of pictures, you will have to mention a group name in brackets
+2- if you would like a group of pictures, you will have to mention a group name in brackets
 	&lt;a href=&quot;images/image-1.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 1&lt;/a&gt;
 	&lt;a href=&quot;images/image-2.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 2&lt;/a&gt;
 	&lt;a href=&quot;images/image-3.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 3&lt;/a&gt;
-* You can also mention a length and a height to the Box, rel="zoombox 800 600", in case of a link which is not a picture
+3- You can also mention a length and a height to the Box, rel="zoombox 800 600", in case of a link which is not a picture
 
 Use
 -------
@@ -36,7 +36,7 @@ Use
 * Youtube links: http://fr.youtube.com/watch?v=8oejjWGFs6o
 * On any other links where the iframe system is being used.
 
-Don’t hesitate to contact me if you have any other idea of additional links.
+Don't hesitate to contact me if you have any other idea of additional links.
 
 ChangeLog
 -------
@@ -54,4 +54,4 @@ Resizing pictures when the picture height is too big
 FAQ
 -------
 Can I modify the file ?
-Yes, but you will have to inform me of the changes you’ve done
+Yes, but you will have to inform me of the changes youâ€™ve done
