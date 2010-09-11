@@ -9,19 +9,19 @@ Set up
 First, place the whole directory "Zoombox" at the root of your website :
 
 * Zoombox uses 2 different Javascript scripts that you will have to import in this exact same order (in <head> or just before </body>)
-	<script type="text/javascript" src="/zoombox/jquery.js">
-	</script><script type="text/javascript" src="/zoombox/zoombox.js"></script>
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/jquery.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/zoombox.js&quot;&gt;&lt;/script&gt;
 * Link the CSS file to your page in the <head>
 	<link href="/zoombox/zoombox.css" rel="stylesheet" type="text/css" media="screen" />
 
 How it works ?
 -------
-* add rel="zoombox"onto your links in order to add the Zoombox effect
-	<a href="http://www.youtube.com/watch?v=8oejjWGFs6o" title="Session 2006" rel="zoombox">Lien</a>
+* add rel="zoombox" onto your links in order to add the Zoombox effect
+	&lt;a href=&quot;http://www.youtube.com/watch?v=8oejjWGFs6o&quot; title=&quot;Session 2006&quot; rel=&quot;zoombox&quot;&gt;Lien&lt;/a&gt;
 * if you would like a group of pictures, you will have to mention a group name in brackets
-	<a href="images/image-1.jpg" rel="zoombox[vacances]">image 1</a>
-	<a href="images/image-2.jpg" rel="zoombox[vacances]">image 2</a>
-	<a href="images/image-3.jpg" rel="zoombox[vacances]">image 3</a>
+	&lt;a href=&quot;images/image-1.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 1&lt;/a&gt;
+	&lt;a href=&quot;images/image-2.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 2&lt;/a&gt;
+	&lt;a href=&quot;images/image-3.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 3&lt;/a&gt;
 * You can also mention a length and a height to the Box, rel="zoombox 800 600", in case of a link which is not a picture
 
 Use
