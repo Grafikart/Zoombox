@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr"> 
+ 
+<head> 
+<meta http-equiv="Content-Type"	content="text/html; charset=UTF-8" /> 
+<meta name="copyright" content="Copyright Grafikart" /> 
+<meta name="classification" content="Art" /> 
+<meta name="author" content="Grafikart" /> 
+<title>Zoombox</title> 
+<link href="http://grafikart.fr/theme/zoombox/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="http://grafikart.fr/js/zoombox/zoombox.css" rel="stylesheet" type="text/css" media="screen" />
+ 
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="zoombox.js"></script>
+</head> 
+ 
+ 
+ 
+ 
+<body> 
+<div id="conteneur"> 
+<div id="header"> 
+<div id="lang"> 
+	<a href="?lang=en"><img src="http://grafikart.fr/theme/zoombox/us.png"http://grafikart.fr/></a>
+	<a href="?lang=fr"><img src="http://grafikart.fr/theme/zoombox/fr.png"http://grafikart.fr/></a>
+</div> 
+<div id="logo"> 
+	<img src="http://grafikart.fr/theme/zoombox/logo.gif" alt="logo"http://grafikart.fr/>
+</div> 
+	<div class="descr"> 
+	<h1>Zoombox, Javascript Modul</h1> 
+	<p>Zoombox is an easy to use Javascript class that allow you to overlay images and videos on the current page.</p> 
+	</div> 
+</div> 
+<div id="sidebar"> 
+<h1>Download</h1> 
+<h2>Current Release: 1.1.0 </h2> 
+<hr/> 
+<p><a href="http://grafikart.fr/fichiers/zoombox.zip"><img src="http://grafikart.fr/theme/zoombox/zip.png"http://grafikart.fr/></a></p>
+ 
+<h1>Contact</h1> 
+<h2>Questions ? Suggestions ?</h2> 
+<hr/> 
+<p><a href="http://grafikart.fr/contact"><img src="http://grafikart.fr/theme/zoombox/mail.gif"http://grafikart.fr/></a></p>
+ 
+</div> 
+<!-- Fin sidebar --> 
+ 
+<div id="contenu"> 
+<h1>Examples</h1> 
+<h2>A few examples of how to use Zoombox</h2> 
+<hr/> 
+<h3>Group of pictures :</h3> 
+<p> 
+<a href="http://grafikart.fr/img/ratons/raton1.jpg" rel="zoombox[galerie1]" title="Un raton laveur">
+<img src="http://grafikart.fr/img/ratons/min_raton1.jpg"http://grafikart.fr/>
+</a> 
+ 
+<a href="http://grafikart.fr/img/ratons/raton2.jpg" rel="zoombox[galerie1]" title="Encore un raton laveur">
+<img src="http://grafikart.fr/img/ratons/min_raton2.jpg"http://grafikart.fr/>
+</a> 
+ 
+<a href="http://grafikart.fr/img/ratons/raton3.jpg" rel="zoombox[galerie1]" title="Un raton curieux">
+<img src="http://grafikart.fr/img/ratons/min_raton3.jpg"http://grafikart.fr/>
+</a> 
+ 
+<a href="http://grafikart.fr/img/ratons/raton4.jpg" rel="zoombox[galerie1]" title="Encore et toujours un raton laveur">
+<img src="http://grafikart.fr/img/ratons/min_raton4.jpg"http://grafikart.fr/>
+</a> 
+ 
+<a href="http://grafikart.fr/img/ratons/raton5.jpg" rel="zoombox[galerie1]" title="Toujours un raton laveur">
+<img src="http://grafikart.fr/img/ratons/min_raton5.jpg"http://grafikart.fr/>
+</a> 
+ 
+<a href="http://grafikart.fr/img/ratons/raton6.jpg" rel="zoombox[galerie1]" title="Et hop un raton laveur">
+<img src="http://grafikart.fr/img/ratons/min_raton6.jpg"http://grafikart.fr/>
+</a> 
+</p> 
+ 
+<h3>Multimedia contents :</h3> 
+<p> 
+<a href="http://www.youtube.com/watch?v=8oejjWGFs6o" title="Un lien youtube" rel="zoombox[galerie2]"> 
+<img alt="" src="http://grafikart.fr/img/icons/reseaux/youtube.gif" />
+</a> 
+ 
+<a href="http://www.dailymotion.com/JojoRatonLaveur/video/x1xhl1_jojodemarrages2diabolos_creation" title="Un lien dailymotion" rel="zoombox[galerie2]"> 
+<img alt="" src="http://grafikart.fr/img/icons/reseaux/dailymotion.gif" />
+</a> 
+ 
+<a href="http://www.vimeo.com/752791" title="Un lien vimeo" rel="zoombox[galerie2]"> 
+<img alt="" src="http://grafikart.fr/img/icons/reseaux/vimeo.gif" />
+</a> 
+</p> 
+ 
+<h1>Set up</h1> 
+<h2>How to set up in two steps</h2> 
+<hr/> 
+<p>First, place the whole directory "Zoombox" at the root of your website :</p> 
+<p>1- Zoombox uses 2 different Javascript scripts that you will have to import in this exact same order (in <code>&lt;head&gt;</code> or just before <code>&lt;/body&gt;</code>)</p> 
+<div class="champ"> 
+<code>&lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/jquery.js&quot;&gt;&lt;/script&gt;</code><br /> 
+<code>&lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/zoombox.js&quot;&gt;&lt;/script&gt;</code> 
+</div> 
+ 
+<p>2- Link the CSS file to your page in the <code>&lt;head&gt;</code></p> 
+<div class="champ"> 
+<code>&lt;link href=&quot;/zoombox/zoombox.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt;</code> 
+</div> 
+ 
+ 
+<h1>functioning</h1> 
+<h2>How it works ?</h2> 
+<hr/> 
+<p>1- add <span class="italique">rel="zoombox"</span>onto your links in order to add the Zoombox effect</p> 
+<div class="champ"> 
+<code>&lt;a href=&quot;http://www.youtube.com/watch?v=8oejjWGFs6o&quot; title=&quot;Session 2006&quot; rel=&quot;zoombox&quot;&gt;Lien&lt;/a&gt;</code> 
+</div> 
+ 
+<p>2- if you would like a group of pictures, you will have to mention a group name in brackets</p> 
+<div class="champ"> 
+<code>&lt;a href=&quot;images/image-1.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 1&lt;/a&gt;</code><br /> 
+<code>&lt;a href=&quot;images/image-2.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 2&lt;/a&gt;</code><br /> 
+<code>&lt;a href=&quot;images/image-3.jpg&quot; rel=&quot;zoombox[vacances]&quot;&gt;image 3&lt;/a&gt;</code> 
+</div> 
+ 
+<p>3- You can also mention a length and a height to the Box, rel="zoombox 800 600", in case of a link which is not a picture</p> 
+ 
+<h1>Use</h1> 
+<h2>What kind of links are supported ?</h2> 
+<hr /> 
+<p> <strong>Images</strong> : jpg,png,gif,bmp<br /> 
+<strong>MP3</strong><br /> 
+<strong>FLV</strong> (An FLV player has been added to the installation file)<br /> 
+<strong>Quicktime</strong> links: Mov or MP4<br /> 
+<strong>WMV</strong> links<br /> 
+<strong>Dailymotion</strong> videos : du type http://www.dailymotion.com/video/x1xhl1_jojodemarrages_creation<br /> 
+<strong>Vimeo </strong> links:  http://www.vimeo.com/752791<br /> 
+<strong>Youtube </strong> links: http://fr.youtube.com/watch?v=8oejjWGFs6o<br /> 
+On any other links where the iframe system is being used.</p> 
+<p>Don�t hesitate to contact me if you have any other idea of additional links.</p> 
+ 
+ 
+<h1>ChangeLog</h1> <h2>v1.1.0 (14/11/2009)</h2><hr /><ul>	<li>New sourcecode (commented in english)</li>	<li>New configuration variables</li>	<li>You can customize the box editing both CSS and HTML Structure.</li>	<li>You can now launch Zoombox with the function zoombox.open(url,largeur,hauteur)</li></ul> 
+<h2>v1.0.1 (22/12/2008)</h2> 
+<hr /> 
+<ul> 
+	<li>Keyboard is now supported (you can use arrows to switch between images in a galery and echap to close Zoombox)</li> 
+</ul> 
+<h2>v1.0.0 (09/03/2008) :</h2> 
+<hr /> 
+<ul> 
+   <li>Class Zoombox created</li> 
+   <li>Resizing pictures when the picture height is too big</li> 
+</ul> 
+ 
+<h1>FAQ</h1> 
+<hr/> 
+<p> 
+<em>Can I modify the file ?</em><br /> 
+Yes, but you will have to inform me of the changes you�ve done<br /><br /> </div> 
+ 
+<div style="clear:both"></div> 
+<!-- Fin contenu--> 
+</div> 
+ 
+<script type="text/javascript"> 
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+<script type="text/javascript"> 
+var pageTracker = _gat._getTracker("UA-6250784-1");
+pageTracker._trackPageview();
+</script> 
+</body> 
+</html><!-- 0,063s -->

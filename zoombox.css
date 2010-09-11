@@ -1,0 +1,186 @@
+#zoombox_aplat {
+	position:fixed;
+	top: 0;
+	left: 0;
+	z-index: 90;
+	width: 100%;
+	height:100%;
+	background-color: #000;
+	cursor:pointer;
+}
+#zoombox_loader {
+	background:url(default/loader.png) left top no-repeat;
+	position:absolute;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	top:50%;
+	left:50%;
+	margin:-20px 0 0 -20px;
+	overflow: hidden;
+	z-index: 110;
+}
+
+#zoombox_close {
+	position: absolute;
+	top: -12px;
+	right: -12px;
+	height: 30px;
+	width: 30px;
+	background: transparent url(default/close.png) ;
+	z-index: 100;
+}
+.zoombox_close{
+	cursor: pointer;
+}
+#zoombox_contener {
+	position:absolute;
+	padding:0;
+	margin:0;
+	overflow: visible;
+	padding:18px 18px 56px 18px;
+	z-index: 90;
+}
+#zoombox_relative{
+	position:relative;
+	width:100%;
+	height:100%;
+}
+#zoombox_content {
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background:#000;
+}	
+#zoombox_content iframe{
+	border:none;
+}
+#zoombox_nav{
+	bottom:-36px;
+	height:26px;
+	left:0px;
+	position:absolute;
+	width:100%;
+	z-index:100;
+	text-align:center;
+	line-height:16px;
+}
+#zoombox_nav table{
+	border:medium none;
+	border-collapse:collapse;
+	border-spacing:0;
+	margin:0 auto;
+	padding:0;
+}
+#zoombox_title{
+	background:transparent url(default/title_r.png) no-repeat top right;
+	padding-right:13px;
+}
+#zoombox_title span{
+	display:block;
+	background:transparent url(default/title.png) top left;
+	padding-left:13px;
+	height:26px;
+	color:#FFFFFF;
+	font-family:Arial;
+	font-size:12px;
+	font-size-adjust:none;
+	font-stretch:normal;
+	font-style:normal;
+	font-variant:normal;
+	font-weight:bold;
+	line-height:25px;
+	text-align:center;
+}	
+#zoombox_next {
+	background:transparent url(default/bouton_d.png) no-repeat top right;
+	display:block;
+	height:26px;
+	width:39px;
+	cursor:pointer;
+}	
+#zoombox_prev{
+	background:transparent url(default/bouton_g.png) no-repeat top left;
+	height:26px;
+	width:39px;
+	display:block;
+	cursor:pointer;
+}	
+#zoombox_next:hover,#zoombox_prev:hover{
+	background-position:bottom left;
+}	
+.clear{clear:both;}
+
+#zoombox_bg {
+}
+div.zoombox_bg_h {
+	position:absolute;
+	top: -18px;
+	left:0;
+	width: 100%;
+	height: 18px;
+	background: transparent url(default/ombre_h.png) repeat-x;
+}
+
+div.zoombox_bg_hd {
+	position:absolute;
+	top: -18px;
+	right: -13px;
+	width: 13px;
+	height: 18px;
+	background: transparent url(default/ombre_hd.png) no-repeat;
+}
+
+div.zoombox_bg_d {
+	position:absolute;
+	top:0;
+	right: -13px;
+	height: 100%;
+	width: 13px;
+	background: transparent url(default/ombre_d.png) repeat-y;
+}
+
+div.zoombox_bg_bd {
+	position:absolute;
+	bottom: -18px;
+	right: -13px;
+	width: 13px;
+	height: 18px;
+	background: transparent url(default/ombre_bd.png) no-repeat;
+}
+
+div.zoombox_bg_b {
+	position:absolute;
+	bottom: -18px;
+	left:0;
+	width: 100%;
+	height: 18px;
+	background: transparent url(default/ombre_b.png) repeat-x;
+}
+
+div.zoombox_bg_bg {
+	position:absolute;
+	bottom: -18px;
+	left: -13px;
+	width: 13px;
+	height: 18px;
+	background: transparent url(default/ombre_bg.png) no-repeat;
+}
+
+div.zoombox_bg_g {
+	left: -13px;
+	top:0;
+	position:absolute;
+	height: 100%;
+	width: 13px;
+	background: transparent url(default/ombre_g.png) repeat-y;
+}
+
+div.zoombox_bg_hg {
+	position:absolute;
+	top: -18px;
+	left: -13px;
+	width: 13px;
+	height: 18px;
+	background: transparent url(default/ombre_hg.png) no-repeat;
+}
