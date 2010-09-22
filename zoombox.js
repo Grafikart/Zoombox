@@ -61,7 +61,7 @@ zoombox = {
 					<div id="zoombox_relative">\
 						<div id="zoombox_content"></div>\
 						<div id="zoombox_bg"><div class="zoombox_bg_h"></div><div class="zoombox_bg_b"></div><div class="zoombox_bg_d"></div><div class="zoombox_bg_g"></div><div class="zoombox_bg_bg"></div><div class="zoombox_bg_bd"></div><div class="zoombox_bg_hg"></div><div class="zoombox_bg_hd"></div></div>\
-						<div id="zoombox_infos"<div id="zoombox_title"><span></span></div></div>\
+						<div id="zoombox_infos"><div id="zoombox_title"><span></span></div></div>\
 						<div id="zoombox_close" class="zoombox_close"></div>\
 						<div id="zoombox_next"></div><div id="zoombox_prev"></div>\
 					</div>\
