@@ -81,7 +81,7 @@ zoombox = {
 	
 	width:		0,
 	height:		0,
-	
+	state:          'close',
 	url:			null,			// Url loaded in the box
 	title:			null,			// Title of the link
 	type:		"multimedia",	// Keep the type of media loaded in the box
@@ -149,6 +149,7 @@ zoombox = {
 	 * Function called when we click one an element OR when we use next or before
 	 * */
 	click : function(div){
+                if(zoombox.state == 'open'){ return false; }
 		zoombox.gallery=zoombox.galleryRegExp.exec(div.attr("rel"));	// The current Gallery
 		// The position of the image in the current Gallery
 		for (var i = 0; i < zoombox.images[zoombox.gallery].length; i++){
@@ -197,6 +198,7 @@ zoombox = {
 	 * @param height (optional) Height of the box
 	 * */
 	open : function(url,width,height){
+                zoombox.state = 'open';
 		zoombox.working = true;
 		// Do we use the function alone ?
 		if(url!=undefined){
@@ -330,6 +332,7 @@ zoombox = {
 			$("#zoombox_contener").remove();
 		}
 		$("#zoombox_aplat").animate({"opacity":0},zoombox.duration,zoombox.remove);
+                zoombox.state = 'close';
 	},
 	
 	/**
@@ -386,6 +389,7 @@ zoombox = {
 			if($("#zoombox_prev").is(":hidden")){
 				$("#zoombox_prev").fadeIn();
 			}
+                        zoombox.state='close';
 			zoombox.click(zoombox.images[zoombox.gallery][zoombox.position]);
 		}
 	},
@@ -403,6 +407,7 @@ zoombox = {
 			if($("#zoombox_next").is(":hidden")){
 				$("#zoombox_next").fadeIn();
 			}
+                        zoombox.state='close';
 			zoombox.click(zoombox.images[zoombox.gallery][zoombox.position]);
 		}
 	},
