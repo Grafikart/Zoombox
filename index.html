@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <title>Zoombox | Grafikart.fr</title>
+
+        <link rel="stylesheet" type="texth/css" href="http://grafikart.fr/css/style.css?vnoel2" />        
+        <link rel="stylesheet" type="text/css" href="zoombox.css" />
+        <link rel="stylesheet" type="text/css" href="http://grafikart.fr/css/colors/zoombox.css" />
+        <style type="text/css">
+            body{ background-position:left -250px;}
+            .subhead{ margin-top:20px; }
+        </style>
+    </head>
+
+
+
+    <body>
+
+        <div id="content" class="wrapper">
+
+
+
+
+
+            <div class="grid_12">
+                <div class="subhead">
+                    <div class="logo"><img src="http://grafikart.fr/img/zoombox/zoombox.png" alt="" /></div>
+                    <ul>
+                        <li class="current"><a href="http://grafikart.fr/zoombox">Home</a></li>
+                        <li><a href="http://grafikart.fr/zoombox/howto">How to use</a></li>
+                        <li><a href="http://grafikart.fr/zoombox/api">API &amp; Options</a></li>
+                        <li><a href="http://grafikart.fr/zoombox/faq">FAQ</a></li>
+                        <li><a href="http://grafikart.fr/contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div><div style="margin-top:60px;">
+                <div class="grid_6 alpha">
+                    <img src="http://grafikart.fr/img/zoombox/zoombox_cover.png" alt="" /></div>
+                <div class="grid_6 omega">
+                    <h1 style="border:none; font-size:26px;">What the fuck is Zoombox ?</h1>
+                    <p>Zoombox is an easy to use jquery modul that allows you to display images, html content and multi media content with a "lightbox" that floats over your web ppage.</p>
+                    <p><strong>Quick example : </strong></p>
+                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.fr/img/zoombox/ratons/raton1.jpg"><img src="http://grafikart.fr/img/zoombox/ratons/min_raton1.jpg" class="bordered" alt="" /></a>
+                    &nbsp; &nbsp;
+                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.fr/img/zoombox/ratons/raton2.jpg"><img src="http://grafikart.fr/img/zoombox/ratons/min_raton2.jpg" class="bordered" alt="" /></a>
+                    &nbsp; &nbsp;
+                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.fr/img/zoombox/ratons/raton3.jpg"><img src="http://grafikart.fr/img/zoombox/ratons/min_raton3.jpg" class="bordered" alt="" /></a>
+                    &nbsp; &nbsp;
+                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.fr/img/zoombox/ratons/raton4.jpg"><img src="http://grafikart.fr/img/zoombox/ratons/min_raton4.jpg" class="bordered" alt="" /></a>
+                    &nbsp; &nbsp;
+                    <br/><br/>
+                    <p>
+                        <a href="https://github.com/Grafikart/Zoombox/zipball/master" class="bluebutton">Download</a>
+                        <a href="https://github.com/Grafikart/Zoombox" class="blackbutton">View Sources <span>(on github)</span></a>
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="clear"></div>
+            <div class="spacer"></div>
+            <div class="spacer"></div>
+            <div class="grid_6 alpha">
+                <h1>Features</h1>
+                <ul>
+                    <li>Can display <strong>all kind of links</strong> : Images, Flash animations, Youtube videos, Dailymotion videos, Iframe, HTML Content</li>
+                    <li><strong>Everything is customizable</strong>, you can create new themes using CSS</li>
+                    <li>You can <strong>group</strong> your link and make galleries</li>
+                    <li><strong>Standalone version</strong>, you can use zoombox as a modalbox : <br/> $.zoombox.html('I can use this plugin to display modal boxes !');</li>
+                </ul>
+            </div>
+            <div class="grid_4">
+                <h1>More Examples</h1>
+                <ul>
+                    <li><strong>Multimédia contents :</strong><br/>
+                        &nbsp; &nbsp; <a href="http://www.youtube.com/watch?v=8oejjWGFs6o" title="Hey this is youtube !" class="zoombox">Youtube</a><br/>
+                        &nbsp; &nbsp; <a href="http://www.dailymotion.com/JojoRatonLaveur/video/x1xhl1_jojodemarrages2diabolos_creation" title="Dailymotion now" class="zoombox">Dailymotion</a><br/>
+                        &nbsp; &nbsp; <a href="http://vimeo.com/752979" title="We all like vimeo !" class="zoombox">Vimeo</a><br/>
+                        &nbsp; &nbsp; <a href="http://grafikart.fr/img/zoombox/video.flv" title="" class="zoombox w500 h400">FLV</a><br/>
+                        &nbsp; &nbsp; <a href="http://grafikart.fr/img/zoombox/video.mp4" title="" class="zoombox w450 h375">MP4/Mov</a><br/>
+                    </li>
+
+                    <li><strong><a title="This is an Inception ! zoombox inside a zoombox inside a zoombox" href="http://grafikart.fr/zoombox" class="zoombox">Iframe</a></strong></li>
+                    <li><strong><a href="#" onclick="$.zoombox.html('<strong>Hi !</strong><p>This is a HTML content !</p>',{theme:'prettyphoto',width:600,height:50}); return false;">HTML Content</a></strong></li>
+                    <li><strong><a href="#" onclick="$.zoombox.open('http://grafikart.fr/img/zoombox/ratons/raton1.jpg',{theme:'prettyphoto',animation:false}); return false;">No animation</a></strong></li>
+                    <li>
+                        <strong>Build in Themes : </strong><br/>
+                        &nbsp; &nbsp; <a title="I like prettyphoto" href="http://grafikart.fr/img/zoombox/ratons/raton1.jpg" onclick="$.zoombox.options.theme = 'prettyphoto';" class="zoombox">PrettyPhoto Theme</a><br/>
+                        &nbsp; &nbsp; <a title="I like prettyphoto" href="http://grafikart.fr/img/zoombox/ratons/raton2.jpg" onclick="$.zoombox.options.theme = 'darkprettyphoto';" class="zoombox">Dark PrettyPhoto Theme</a><br/>
+                        &nbsp; &nbsp; <a title="I like lightbox" href="http://grafikart.fr/img/zoombox/ratons/raton3.jpg" onclick="$.zoombox.options.theme = 'lightbox';" class="zoombox">Lightbox Theme</a><br/>
+                        &nbsp; &nbsp; <a title="I like it simple" href="http://grafikart.fr/img/zoombox/ratons/raton6.jpg" onclick="$.zoombox.options.theme = 'simple';" class="zoombox">Simple Theme</a><br/>
+                    </li>
+                </ul>
+            </div>
+            <div class="grid_2 omega">
+                <h1>Buy me a coffee</h1>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="4ACPY266ZE69W">
+                    <input type="image" src="http://grafikart.fr/img/zoombox/coffee.png" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                    <img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+                </form>
+                <p class="center">You like my work ?<br/>I like coffee :)</p>
+            </div>            			<div class="clear"></div>
+
+        </div>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="zoombox.js"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            $(function(){
+                $('a.zoombox').zoombox();
+            });
+
+            //]]>
+        </script>
+
+
+    </body>
+
+</html>
