@@ -11,7 +11,8 @@ var options = {
     width       : 600,                  // Default width
     height      : 400,                  // Default height
     gallery     : true,                 // Allow gallery thumb view
-    autoplay : false                // Autoplay for video
+    autoplay : false,                // Autoplay for video
+    overflow  : false               // Allow images bigger than screen ?
 }
 var images = new Array();         // Gallery Array [gallery name][link]
 var elem;           // HTML element currently used to display box
@@ -140,6 +141,9 @@ function build(){
     $(window).keydown(function(event){
         shortcut(event.which);
     });
+    $(window).resize(function(){
+        resize();
+    });
     $('#zoombox .mask').hide();
     $('#zoombox .gallery').hide();
     // We add a specific class to define the box theme
@@ -181,21 +185,6 @@ function build(){
             }
         }
     }
-}
-/**
- * Keyboard Shortcut
- **/
-function shortcut(key){
-    if(key == 37){
-        prev();
-    }
-    if(key == 39){
-        next();
-    }
-    if(key == 27){
-        close();
-    }
-
 }
 /**
  * Open the box
@@ -291,7 +280,8 @@ function open(){
 function close(){
     state = 'closing';
     window.clearInterval(timer);
-    $(window).unbind('keydown'); 
+    $(window).unbind('keydown');
+    $(window).unbind('resize'); 
     if(type == 'multimedia'){
         $('#zoombox .container').empty();
     }
@@ -339,6 +329,18 @@ function close(){
  * Set the HTML Content of the box
  * */
 function setContent(){
+    // Overtflow
+    if(options.overflow == false){
+        if(width + 50 > windowW()){
+            height = (windowW() - 50) * height / width;
+            width = windowW() - 50; 
+        }
+        if(height + 50 > windowH()){
+            width = (windowH()-50) * width / height; 
+            height = windowH() - 50;
+        }
+    }
+    
     var url = link;
     type = 'multimedia';
     if(filtreImg.test(url)){
@@ -449,6 +451,30 @@ function prev(){
 /**
  * GENERAL FUNCTIONS
  * */
+/**
+ * Resize
+ **/
+function resize(){
+    $('#zoombox .container').css({
+        top : (windowH() - $('#zoombox .container').height()) / 2,
+        left : (windowW() - $('#zoombox .container').width()) / 2,
+    });
+}
+/**
+ * Keyboard Shortcut
+ **/
+function shortcut(key){
+    if(key == 37){
+        prev();
+    }
+    if(key == 39){
+        next();
+    }
+    if(key == 27){
+        close();
+    }
+
+}
 /**
  * Parse Width/Height of a link and insert it in the width and height variables
  * */
