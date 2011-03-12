@@ -86,7 +86,7 @@ $.fn.zoombox = function(opts){
             return false;
         }
         var obj = this;
-        var galleryRegExp =  /zgallery(.*)/;
+        var galleryRegExp =  /zgallery([0-9]+)/;
         var gallery = galleryRegExp.exec($(this).attr("class"));
         var tmpimageset = false;
         if(gallery != null){
@@ -210,7 +210,7 @@ function open(){
     // We empty the content
     $('#zoombox .content').empty();
     // If it's an image we load the content now (to get a good animation)
-    if((type=='img' || options.animation==false) && isOpen == false){
+    if(type=='img' && isOpen == false && options.animation == true){
         $('#zoombox .content').append(content);
     }
     // Default position/size of the box to make the "zoom effect"
@@ -266,12 +266,14 @@ function open(){
         });
         $('#zoombox .mask').fadeTo(200,options.opacity);
     }else{
+        $('#zoombox .content').append(content);
         $('#zoombox .close').show();
         $('#zoombox .gallery').show();
         $('#zoombox .container').css(css);
         $('#zoombox .mask').show();
         $('#zoombox .mask').css('opacity',options.opacity);
         isOpen = true;
+        state = 'opened';
     }
 }
 /**
@@ -430,6 +432,7 @@ function gotoSlide(i){
         $('#zoombox .gallery img:eq('+i+')').addClass('current');
     }
     load();
+    return false;
 }
 
 function next(){
