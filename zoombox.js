@@ -460,7 +460,7 @@ function prev(){
 function resize(){
     $('#zoombox .container').css({
         top : (windowH() - $('#zoombox .container').height()) / 2,
-        left : (windowW() - $('#zoombox .container').width()) / 2,
+        left : (windowW() - $('#zoombox .container').width()) / 2
     });
 }
 /**
