@@ -320,10 +320,12 @@ function close(){
         $('#zoombox .container').animate(css,options.duration,function(){
             $('#zoombox').remove();
             state = 'closed';
+			isOpen = false; 
         });
     }else{
         $('#zoombox').remove();
         state = 'closed';
+		isOpen = false; 
     }
 }
 
