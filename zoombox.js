@@ -105,8 +105,6 @@ $.fn.zoombox = function(opts){
             link = elem.attr('href');
             imageset = tmpimageset;
             position = pos;
-            width = options.width;
-            height = options.height;
             load();
             return false;
         });
@@ -335,16 +333,15 @@ function close(){
 function setContent(){
     // Overtflow
     if(options.overflow == false){
-        if(width + 50 > windowW()){
+        if(width*1 + 50 > windowW()){
             height = (windowW() - 50) * height / width;
-            width = windowW() - 50; 
+            width = windowW() - 50;
         }
-        if(height + 50 > windowH()){
+        if(height*1 + 50 > windowH()){
             width = (windowH()-50) * width / height; 
             height = windowH() - 50;
         }
     }
-    
     var url = link;
     type = 'multimedia';
     if(filtreImg.test(url)){
@@ -484,6 +481,8 @@ function shortcut(key){
  * Parse Width/Height of a link and insert it in the width and height variables
  * */
 function setDim(){
+    width = options.width;
+    height = options.height;
     if(elem!=null){
         var widthReg = /w([0-9]+)/;
         var w = widthReg.exec(elem.attr("class"));
