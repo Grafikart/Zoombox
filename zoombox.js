@@ -350,8 +350,8 @@ function setContent(){
     }else if(filtreMP3.test(url)){
         width=300;
         height=40;
-        content ='<object type="application/x-shockwave-flash" data="'+MP3Player+'?son='+url+'" width="'+width+'" height="'+height+'">';
-        content+='<param name="movie" value="'+MP3Player+'?son='+url+'" /></object>';
+        content ='<object type="application/x-shockwave-flash" data="dewplayer-mini.swf?mp3='+url+'" width="'+width+'" height="'+height+'">';
+        content+='<param name="movie" value="dewplayer-mini.swf?mp3='+url+'" /></object>';
     }else if(filtreFLV.test(url)){
         var autostart = 0;
         if(options.autoplay==true){ autostart = 1; } 
