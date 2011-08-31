@@ -53,7 +53,7 @@ var filtreDailymotion=	/(http:\/\/www.dailymotion)|(http:\/\/dailymotion)/i;
 var filtreVimeo=		/(http:\/\/www.vimeo)|(http:\/\/vimeo)/i;
 var filtreYoutube=		/(youtube\.)/i;
 var filtreKoreus=		/(http:\/\/www\.koreus)|(http:\/\/koreus)/i;
-
+var galleryLoaded = 0; 
 
 $.zoombox = function(el,options) {
 
@@ -152,7 +152,7 @@ function build(){
         return false;
     });
     $('#zoombox .mask').mouseover(function(){
-        $('#zoombox .gallery').stop().fadeTo(500,0);
+        //$('#zoombox .gallery').stop().fadeTo(500,0);
     });
     $('#zoombox .mask').mouseout(function(){
         $('#zoombox .gallery').stop().fadeTo(500,0.9);
@@ -167,23 +167,83 @@ function build(){
         $('#zoombox .prev').click(function(){
             prev();
         });
-        if(options.gallery){
-            for(var i in imageset){
-                var img = $('<img src="'+zoombox_path+'img/blank.png'+'" class="video gallery'+(i*1)+'"/>');
-                if(filtreImg.test(imageset[i].attr('href'))){
-                   img = $('<img src="'+imageset[i].attr('href')+'" class="gallery'+(i*1)+'"/>');
-                }
-                img.appendTo('#zoombox .gallery');
-                img.click(function(){
-                   gotoSlide($(this).attr('class').replace('gallery',''));
-                   $('#zoombox .gallery img').removeClass('current');
-                   $(this).addClass('current');
-                });
-                if(i==position){ img.addClass('current'); }
-            }
-        }
     }
 }
+
+/**
+*   Gallery System (with slider if too much images)
+*/
+function gallery(){
+    var loaded = 0;
+    var width = 0;
+    var contentWidth = 0;   
+    if(options.gallery){
+        for(var i in imageset){
+            var imgSrc = zoombox_path+'img/blank.png';
+            var img = $('<img src="'+imgSrc+'" class="video gallery'+(i*1)+'"/>');
+            if(filtreImg.test(imageset[i].attr('href'))){
+               imgSrc = imageset[i].attr('href')
+               img = $('<img src="'+imgSrc+'" class="gallery'+(i*1)+'"/>');
+            }
+            img.appendTo('#zoombox .gallery');
+            img.click(function(){
+               gotoSlide($(this).attr('class').replace('gallery',''));
+               $('#zoombox .gallery img').removeClass('current');
+               $(this).addClass('current');
+            });
+            if(i==position){ img.addClass('current'); }
+
+            // Listen the loading of Images
+            $("<img/>").data('img',img).attr("src", imgSrc).load(function() {
+                    loaded++;
+                    var img = $(this).data('img');
+                    img.width(Math.round(img.height() * this.width/this.height));
+                    if(loaded == $('#zoombox .gallery img').length){
+                        var width = 0; 
+                        $('#zoombox .gallery img').each(function(){
+                            width += $(this).outerWidth(); 
+                            $(this).data('left',width); 
+                        });
+                        var div = $('<div>').css({
+                            position:'absolute',
+                            top:0,
+                            left:0,
+                            width: width
+                        });
+                        $('#zoombox .gallery').wrapInner(div); 
+                        contentWidth = $('#zoombox .gallery').width(); 
+                        $('#zoombox').trigger('change'); 
+                    }
+                });
+        }
+    }
+
+    $('#zoombox').bind('change',function(e,css){
+        if($('#zoombox .gallery div').width() < $('#zoombox .gallery').width){
+            return true;
+        }
+        var d = 0;
+        var center = 0; 
+        if(css != null){
+            d = options.duration;
+            center = css.width / 2;
+        }else{
+            center = $('#zoombox .gallery').width()/2;
+        }
+        var decal = - $('#zoombox .gallery img.current').data('left') + $('#zoombox .gallery img.current').width() / 2;
+        var left = decal + center;
+        if(left < center * 2 - $('#zoombox .gallery div').width() ){
+            left = center * 2 - $('#zoombox .gallery div').width();
+        }
+        if(left > 0){ 
+            left = 0;
+        }
+        $('#zoombox .gallery div').animate({left:left},d);
+    });
+
+}
+
+
 /**
  * Open the box
  **/
@@ -246,6 +306,10 @@ function open(){
         marginTop : scrollY(),
         opacity:1
     };
+
+    // Trigger the change event
+    $('#zoombox').trigger('change',css); 
+
     // Do we animate or not ?
     if(options.animation == true){
         $('#zoombox .title').hide();
@@ -260,6 +324,9 @@ function open(){
             $('#zoombox .gallery').fadeIn();
             $('#zoombox .title').fadeIn(300);
             state = 'opened';
+            if(!isOpen){
+                gallery();
+            }
             isOpen = true;
         });
         $('#zoombox .mask').fadeTo(200,options.opacity);
@@ -270,6 +337,9 @@ function open(){
         $('#zoombox .container').css(css);
         $('#zoombox .mask').show();
         $('#zoombox .mask').css('opacity',options.opacity);
+        if(!isOpen){
+            gallery();
+        }
         isOpen = true;
         state = 'opened';
     }
@@ -346,7 +416,7 @@ function setContent(){
     type = 'multimedia';
     if(filtreImg.test(url)){
         type = 'img';
-        content='<img src="'+link+'" width="'+width+'" height="'+height+'"/>';
+        content='<img src="'+link+'" width="100%" height="100%"/>';
     }else if(filtreMP3.test(url)){
         width=300;
         height=40;
@@ -457,9 +527,10 @@ function prev(){
  * Resize
  **/
 function resize(){
+    console.log($('#zoombox .container').outerWidth(true));
     $('#zoombox .container').css({
-        top : (windowH() - $('#zoombox .container').height()) / 2,
-        left : (windowW() - $('#zoombox .container').width()) / 2
+        top : (windowH() - $('#zoombox .container').outerHeight(true)) / 2,
+        left : (windowW() - $('#zoombox .container').outerWidth(true)) / 2
     });
 }
 /**
