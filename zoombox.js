@@ -215,7 +215,6 @@ function gallery(){
                         $('#zoombox').trigger('change'); 
                     }
                 });
-            $('#zoombox .gallery').hide();
         }
     }
 
