@@ -152,7 +152,7 @@ function build(){
         return false;
     });
     $('#zoombox .mask').mouseover(function(){
-        //$('#zoombox .gallery').stop().fadeTo(500,0);
+        $('#zoombox .gallery').stop().fadeTo(500,0);
     });
     $('#zoombox .mask').mouseout(function(){
         $('#zoombox .gallery').stop().fadeTo(500,0.9);
@@ -215,6 +215,7 @@ function gallery(){
                         $('#zoombox').trigger('change'); 
                     }
                 });
+            $('#zoombox .gallery').hide();
         }
     }
 
