@@ -151,12 +151,6 @@ function build(){
         close();
         return false;
     });
-    $('#zoombox .mask').mouseover(function(){
-        $('#zoombox .gallery').stop().fadeTo(500,0);
-    });
-    $('#zoombox .mask').mouseout(function(){
-        $('#zoombox .gallery').stop().fadeTo(500,0.9);
-    });
     // Next/Prev button
     if(imageset == false){
         $('#zoombox .next,#zoombox .prev').remove();
@@ -178,6 +172,10 @@ function gallery(){
     var width = 0;
     var contentWidth = 0;   
     if(options.gallery){
+        if(imageset === false){
+            $('#zoombox .gallery').remove(); 
+            return false;
+        } 
         for(var i in imageset){
             var imgSrc = zoombox_path+'img/blank.png';
             var img = $('<img src="'+imgSrc+'" class="video gallery'+(i*1)+'"/>');
@@ -218,6 +216,13 @@ function gallery(){
         }
     }
 
+    $('#zoombox .mask').mouseover(function(){
+        $('#zoombox .gallery').stop().fadeTo(500,0);
+    });
+    $('#zoombox .mask').mouseout(function(){
+        $('#zoombox .gallery').stop().fadeTo(500,0.9);
+    });
+    
     $('#zoombox').bind('change',function(e,css){
         if($('#zoombox .gallery div').width() < $('#zoombox .gallery').width){
             return true;
