@@ -14,8 +14,8 @@ var options = {
     autoplay : false,                // Autoplay for video
     overflow  : false,               // Allow images bigger than screen ?
     minSize : 200,		// minimum picture draw size
-    minPaddingX : 20,		// padding minimum size, between image and box
-    minPaddingY : 20
+    paddingX : 20,		// padding size, between image/box
+    paddingY : 20
 }
 var images;// = new Array();         // Gallery Array [gallery name][link]
 var elem;           // HTML element currently used to display box
@@ -83,7 +83,7 @@ $.fn.zoombox = function(opts){
     /**
      * Bind the behaviour on every Elements
      */
-    var images = new Array(); // allow multiple call on one page, for content loaded from ajax
+    images = new Array(); // allow multiple call on one page, for content loaded from ajax
     
     return this.each(function(){
         // No zoombox for IE6
@@ -306,40 +306,60 @@ function open(){
 				}
 	}
 	
+	var screenSx = windowW();
+	var screenSy = windowH();
+	
 	// max resize
-	var maxx = windowW()-40;
-	var maxy = windowH()-40;
+	var maxx = screenSx-(options.paddingX*4);
+	var maxy = screenSy-(options.paddingY*4);
 
-	if(width > maxx || height > maxy)
-	{	if(width > height)
-		{	var r = height/width;
-			width = maxx;
-			height=width*r;
-		} else	if(height > width)
-			{	var r = width/height;
-				height=maxy;
-				width=height*r;
-			} else { if(maxx > maxy) width=height=maxy; else width=height=maxx; }
+	// check picture and screen hight ratio
+	
+	var ir = width/height;
+	var sr = maxx/maxy;
+	
+	if(ir > sr)
+	{	if(width > maxx)
+		{	width = maxx;
+			height = width/ir;
+			//alert("width!");
+		}
+	  
+	} else {
+		if(height > maxy)
+		{	height = maxy;
+			width = height*ir;
+			//alert("height!");
+		}
 	}
-
-	if(width < minSize) paddingx = (minSize-width)/2;
- 	if(height < minSize) paddingy = (minSize-height)/2;
- 
- 	if(paddingx < options.minPaddingX) paddingx = options.minPaddingX;
-	if(paddingx < options.minPaddingY) paddingy = options.minPaddingY;
     }
     
+    var paddingx = options.paddingX;
+    var paddingtop = options.paddingY;
+    var paddingbot = options.paddingY;
+    
+    //var nextbtn = $("#zoombox .next"); nextbtn.height()
+    var galH = $("#zoombox .gallery").height();
+    
+    var limity = (galH+35)*2; // 30px de plus pour le bouton next et 10px pour un padding haut minimum
+
+    height = Math.round(height);
+    width = Math.round(width);
+
+    if(height < limity) { paddingtop = 10; paddingbot = limity-10; }
+    if(width < 100) paddingx = 30;
+ 
     // Final position/size of the box after the animation
     var css = {
         width : width,
         height: height,
-        left  : ((windowW() - width) - paddingx*2) / 2,
-        top   : ((windowH() - height) - paddingy*2) / 2,
+        left  : (screenSx - (width + paddingx*2))>>1,
+        top   : (screenSy - (height + paddingtop + paddingbot))>>1,
         marginTop : scrollY(),
 	paddingLeft:paddingx,
  	paddingRight:paddingx,
- 	paddingTop:paddingy,
- 	paddingBottom:paddingy,
+ 	paddingTop:paddingtop,
+ 	paddingBottom:paddingbot,
         opacity:1
     };
 
