@@ -12,9 +12,12 @@ var options = {
     height      : 400,                  // Default height
     gallery     : true,                 // Allow gallery thumb view
     autoplay : false,                // Autoplay for video
-    overflow  : false               // Allow images bigger than screen ?
+    overflow  : false,               // Allow images bigger than screen ?
+    minSize : 200,		// minimum picture draw size
+    paddingX : 20,		// padding size, between image/box
+    paddingY : 20
 }
-var images = new Array();         // Gallery Array [gallery name][link]
+var images;// = new Array();         // Gallery Array [gallery name][link]
 var elem;           // HTML element currently used to display box
 var isOpen = false; // Zoombox already opened ?
 var link;           // Shortcut for the link
@@ -80,28 +83,30 @@ $.fn.zoombox = function(opts){
     /**
      * Bind the behaviour on every Elements
      */
+    images = new Array(); // allow multiple call on one page, for content loaded from ajax
+    
     return this.each(function(){
         // No zoombox for IE6
         if($.browser.msie && $.browser.version < 7 && !window.XMLHttpRequest){
             return false;
         }
         var obj = this;
+	var $t = $(this);
         var galleryRegExp =  /zgallery([0-9]+)/;
-        var gallery = galleryRegExp.exec($(this).attr("class"));
+        var gallery = galleryRegExp.exec($t.attr("class"));
         var tmpimageset = false;
-        if(gallery != null){
-            if(!images[gallery[1]]){
-                images[gallery[1]]=new Array();
-            }
-            images[gallery[1]].push($(this));
-            var pos = images[gallery[1]].length-1;
-            tmpimageset = images[gallery[1]];
+	
+        if(gallery != null)
+	{	if(!images[gallery[1]]) images[gallery[1]]=new Array();
+		images[gallery[1]].push($(this));
+		var pos = images[gallery[1]].length-1;
+		tmpimageset = images[gallery[1]];
         }
-        $(this).unbind('click');
-        $(this).click(function(){
-            options = $.extend({},$.zoombox.options,opts);
+        
+        $t.unbind('click').click(function()
+	{   options = $.extend({},$.zoombox.options,opts);
             if(state!='closed') return false;
-            elem = $(obj);
+            elem = $t;
             link = elem.attr('href');
             imageset = tmpimageset;
             position = pos;
@@ -248,106 +253,140 @@ function gallery(){
 
 }
 
-
 /**
  * Open the box
  **/
 function open(){
-    if(isOpen == false){
-        build();
-    }else{
-        $('#zoombox .title').empty();
-    }
+    if(isOpen == false) build(); else $('#zoombox .title').empty();
     $('#zoombox .close').hide();
-    $('#zoombox .container').removeClass('multimedia').removeClass('img');
-    $('#zoombox .container').addClass(type);
+    $('#zoombox .container').removeClass('multimedia').removeClass('img').addClass(type);
 
     // We add a title if we find one on the link
-    if(elem != null && elem.attr('title')){
-        $('#zoombox .title').append(elem.attr('title'));
-    }
-
-
+    if(elem != null && elem.attr('title')) $('#zoombox .title').append(elem.attr('title'));
 
     // And after... Animation or not depending of preferences
     // We empty the content
-    $('#zoombox .content').empty();
+
     // If it's an image we load the content now (to get a good animation)
-    if(type=='img' && isOpen == false && options.animation == true){
-        $('#zoombox .content').append(content);
-    }
+	if(type=='img' && isOpen == false && options.animation == true)
+		$('#zoombox .content').html(content);
+	else	$('#zoombox .content').empty();
+    
     // Default position/size of the box to make the "zoom effect"
-    if(elem != null && elem.find('img').length != 0 && isOpen == false){
-        var min = elem.find('img');
-        $('#zoombox .container').css({
-            width : min.width(),
-            height: min.height(),
-            top : min.offset().top,
-            left : min.offset().left,
-            opacity:0,
-            marginTop : min.css('marginTop')
-        });
-    }else if(elem != null && isOpen == false){
-        $('#zoombox .container').css({
-           width:   elem.width(),
-           height:  elem.height(),
-           top:elem.offset().top,
-           left:elem.offset().left
-        });
-    }else if(isOpen == false){
-        $('#zoombox .container').css({
-            width: 100,
-            height: 100,
-            top:windowH()/2-50,
-            left:windowW()/2-50
-        })
+	if(isOpen == false)
+	{	if(elem != null)
+		{	$img =  elem.find('img');
+			if($img.length != 0)
+			{	$ioff = $img.offset();
+				$('#zoombox .container').css({width:$img.width(),height:$img.height(),top:$ioff.top,left:$ioff.left,opacity:0,marginTop:$img.css('marginTop')});
+			} else	{	$eoff = elem.offset();
+					$('#zoombox .container').css({width:elem.width(),height:elem.height(),top:$eoff.top,left:$eoff.left});
+				}
+		} else	$('#zoombox .container').css({width:100,height:100,top:windowH()/2-50,left:windowW()/2-50})
+	}
+    
+	var paddingx = options.minPaddingX;
+	var paddingy = options.minPaddingY;
+    
+    if(options.minSize)
+    {	var minSize = options.minSize;
+
+	// min resize
+	if(width < minSize || height < minSize)
+	{			
+		if(width < height)
+		{	var r = height/width;
+			height=minSize*r;
+			width = minSize;
+		} else	if(height < width)
+			{	var r = width/height;
+				height=minSize;
+				width = minSize*r;
+			} else	{	width=height=minSize;
+				}
+	}
+	
+	var screenSx = windowW();
+	var screenSy = windowH();
+	
+	// max resize
+	var maxx = screenSx-(options.paddingX*4);
+	var maxy = screenSy-(options.paddingY*4);
+
+	// check picture and screen hight ratio
+	
+	var ir = width/height;
+	var sr = maxx/maxy;
+	
+	if(ir > sr)
+	{	if(width > maxx)
+		{	width = maxx;
+			height = width/ir;
+			//alert("width!");
+		}
+	  
+	} else {
+		if(height > maxy)
+		{	height = maxy;
+			width = height*ir;
+			//alert("height!");
+		}
+	}
     }
+    
+    var paddingx = options.paddingX;
+    var paddingtop = options.paddingY;
+    var paddingbot = options.paddingY;
+    
+    //var nextbtn = $("#zoombox .next"); nextbtn.height()
+    var galH = $("#zoombox .gallery").height();
+    
+    var limity = (galH+35)*2; // 30px de plus pour le bouton next et 10px pour un padding haut minimum
+
+    height = Math.round(height);
+    width = Math.round(width);
+
+    if(height < limity) { paddingtop = 10; paddingbot = limity-10; }
+    if(width < 100) paddingx = 30;
+ 
     // Final position/size of the box after the animation
     var css = {
         width : width,
         height: height,
-        left  : (windowW() - width) / 2,
-        top   : (windowH() - height) / 2,
+        left  : (screenSx - (width + paddingx*2))>>1,
+        top   : (screenSy - (height + paddingtop + paddingbot))>>1,
         marginTop : scrollY(),
+	paddingLeft:paddingx,
+ 	paddingRight:paddingx,
+ 	paddingTop:paddingtop,
+ 	paddingBottom:paddingbot,
         opacity:1
     };
 
     // Trigger the change event
-    $('#zoombox').trigger('change',css); 
+	$('#zoombox').trigger('change',css); 
 
     // Do we animate or not ?
-    if(options.animation == true){
-        $('#zoombox .title').hide();
-        $('#zoombox .container').animate(css,options.duration,function(){
-            if(type == 'multimedia' || isOpen == true){
-                $('#zoombox .content').append(content);
-            }
-            if(type == 'image' || isOpen == true){
-                $('#zoombox .content img').css('opacity',0).fadeTo(300,1);
-            }
-            $('#zoombox .close').fadeIn();
-            $('#zoombox .gallery').fadeIn();
-            $('#zoombox .title').fadeIn(300);
-            state = 'opened';
-            if(!isOpen){
-                gallery();
-            }
-            isOpen = true;
-        });
-        $('#zoombox .mask').fadeTo(200,options.opacity);
-    }else{
-        $('#zoombox .content').append(content);
-        $('#zoombox .close').show();
-        $('#zoombox .gallery').show();
-        $('#zoombox .container').css(css);
-        $('#zoombox .mask').show();
-        $('#zoombox .mask').css('opacity',options.opacity);
-        if(!isOpen){
-            gallery();
-        }
-        isOpen = true;
-        state = 'opened';
-    }
+	if(options.animation == true)
+	{	$('#zoombox .title').hide();
+		$('#zoombox .container').animate(css,options.duration,function()
+		{	if(type == 'multimedia' || isOpen == true)	$('#zoombox .content').append(content);
+			else	if(type == 'image' || isOpen == true)	$('#zoombox .content img').css('opacity',0).fadeTo(300,1);
+			$('#zoombox .close').fadeIn();
+			$('#zoombox .gallery').fadeIn();
+			$('#zoombox .title').fadeIn(300);
+			state = 'opened'; if(!isOpen) gallery(); isOpen = true;
+		});
+		
+		$('#zoombox .mask').fadeTo(200,options.opacity);
+	} else
+	{	$('#zoombox .content').append(content);
+		$('#zoombox .close').show();
+		$('#zoombox .gallery').show();
+		$('#zoombox .container').css(css);
+		$('#zoombox .mask').show().css('opacity',options.opacity);
+		state = 'opened'; if(!isOpen) gallery(); isOpen = true;
+	}
 }
 /**
  * Close the box
