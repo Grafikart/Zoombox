@@ -422,12 +422,12 @@ function setContent(){
     }else if(filtreFLV.test(url)){
         var autostart = 0;
         if(options.autoplay==true){ autostart = 1; } 
-        content='<object type="application/x-shockwave-flash" data="'+zoombox_path+'FLVPlayer.swf" width="'+width+'" height="'+height+'">\
+        content='<object type="application/x-shockwave-flash" data="'+zoombox_path+'FLVplayer.swf" width="'+width+'" height="'+height+'">\
 <param name="allowFullScreen" value="true">\
 <param name="scale" value="noscale">\
 <param name="wmode" value="transparent">\
 <param name="flashvars" value="flv='+url+'&autoplay='+autostart+'">\
-<embed src="'+zoombox_path+'FLVPlayer.swf" width="'+width+'" height="'+height+'" allowscriptaccess="always" allowfullscreen="true" flashvars="flv='+url+'" wmode="transparent" />\
+<embed src="'+zoombox_path+'FLVplayer.swf" width="'+width+'" height="'+height+'" allowscriptaccess="always" allowfullscreen="true" flashvars="flv='+url+'" wmode="transparent" />\
 </object>';
     }else if(filtreSWF.test(url)){
         content='<object width="'+width+'" height="'+height+'"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="'+url+'" /><embed src="'+url+'" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="'+width+'" height="'+height+'" wmode="transparent"></embed></object>';
