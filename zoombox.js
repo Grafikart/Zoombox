@@ -444,13 +444,14 @@ function setContent(){
         if(options.autoplay==true){
             id = id + '&autostart=1';
         }
-        content='<object width="'+width+'" height="'+height+'"><param name="movie" value="http://www.dailymotion.com/swf/'+id+'&colors=background:000000;glow:000000;foreground:FFFFFF;special:000000;&related=0"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://www.dailymotion.com/swf/'+id+'&colors=background:000000;glow:000000;foreground:FFFFFF;special:000000;&related=0" type="application/x-shockwave-flash" width="'+width+'" height="'+height+'" allowFullScreen="true" allowScriptAccess="always" wmode="transparent" ></embed></object>';
+        content='<iframe frameborder="0" width="'+width+'" height="'+height+'" src="http://www.dailymotion.com/embed/video/'+id+'?wmode=transparent"></iframe>';
     }else if(filtreVimeo.test(url)){
         var id=url.split('/');
         id=id[3];
         if(options.autoplay==true){
             id = id + '&autoplay=1';
         }
+        content='<iframe src="http://player.vimeo.com/video/'+id+'?title=0&amp;byline=0&amp;portrait=0&amp;wmode=transparent" width="'+width+'" height="'+height+'" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
         content='<object width="'+width+'" height="'+height+'"><param name="allowfullscreen" value="true" />	<param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /><param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id='+id+'&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00AAEB&amp;fullscreen=1" />	<embed src="http://www.vimeo.com/moogaloop.swf?clip_id='+id+'&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00AAEB&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="'+width+'" height="'+height+'" wmode="transparent" ></embed></object>';
     }else if(filtreYoutube.test(url)){
         var id=url.split('watch?v=');
@@ -459,7 +460,7 @@ function setContent(){
         if(options.autoplay==true){
             id = id + '&autoplay=1';
         }
-        content='<object width="'+width+'" height="'+height+'"><param name="movie" value="http://www.youtube.com/v/'+id+'&hl=fr&rel=0&color1=0xFFFFFF&color2=0xFFFFFF&hd=1"></param><embed src="http://www.youtube.com/v/'+id+'&hl=fr&rel=0&color1=0xFFFFFF&color2=0xFFFFFF&hd=1" type="application/x-shockwave-flash" width="'+width+'" height="'+height+'" wmode="transparent"></embed></object>';
+        content='<iframe width="'+width+'" height="'+height+'" src="http://www.youtube.com/embed/'+id+'?wmode=Opaque" frameborder="0" allowfullscreen></iframe>';
     }else if(filtreKoreus.test(url)){
         url=url.split('.html');
         url=url[0];
