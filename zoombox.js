@@ -440,27 +440,26 @@ function setContent(){
     }else if(filtreDailymotion.test(url)){
         var id=url.split('_');
         id=id[0].split('/');
-        id=id[id.length-1];
+        id=id[id.length-1]+'?';
         if(options.autoplay==true){
-            id = id + '&autostart=1';
+            id = id + 'autoPlay=1&';
         }
         content='<iframe frameborder="0" width="'+width+'" height="'+height+'" src="http://www.dailymotion.com/embed/video/'+id+'?wmode=transparent"></iframe>';
     }else if(filtreVimeo.test(url)){
         var id=url.split('/');
-        id=id[3];
+        id=id[3]+'?';
         if(options.autoplay==true){
-            id = id + '&autoplay=1';
+            id = id + 'autoplay=1&';
         }
-        content='<iframe src="http://player.vimeo.com/video/'+id+'?title=0&amp;byline=0&amp;portrait=0&amp;wmode=transparent" width="'+width+'" height="'+height+'" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
-        content='<object width="'+width+'" height="'+height+'"><param name="allowfullscreen" value="true" />	<param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /><param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id='+id+'&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00AAEB&amp;fullscreen=1" />	<embed src="http://www.vimeo.com/moogaloop.swf?clip_id='+id+'&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=1&amp;color=00AAEB&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="'+width+'" height="'+height+'" wmode="transparent" ></embed></object>';
+        content='<iframe src="http://player.vimeo.com/video/'+id+'title=0&amp;byline=0&amp;portrait=0&amp;wmode=transparent" width="'+width+'" height="'+height+'" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
     }else if(filtreYoutube.test(url)){
         var id=url.split('watch?v=');
         id=id[1].split('&');
-        id=id[0];
+        id=id[0]+'?';
         if(options.autoplay==true){
-            id = id + '&autoplay=1';
+            id = id + 'autoplay=1&';
         }
-        content='<iframe width="'+width+'" height="'+height+'" src="http://www.youtube.com/embed/'+id+'?wmode=Opaque" frameborder="0" allowfullscreen></iframe>';
+        content='<iframe width="'+width+'" height="'+height+'" src="http://www.youtube.com/embed/'+id+'wmode=Opaque" frameborder="0" allowfullscreen></iframe>';
     }else if(filtreKoreus.test(url)){
         url=url.split('.html');
         url=url[0];
