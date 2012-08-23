@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Zoombox</title>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans|Kreon' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://jonathan-boyer.fr/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="zoombox/zoombox.css" />
+  </head>
+
+
+  <body>
+
+    <div id="root">
+      <header class="header">
+        <a href="http://jonathan-boyer.fr/" class="logo">
+          <img src="http://jonathan-boyer.fr/img/logo.png" alt="" />        </a>
+        <nav>
+          <a href="http://jonathan-boyer.fr/" class="">Accueil</a>
+          <a href="http://jonathan-boyer.fr/portfolio" class="">Portfolio</a>
+          <a href="http://jonathan-boyer.fr/projets" class="active">Projets</a>
+          <a href="http://jonathan-boyer.fr/competences" class="">Compétences</a>
+          <a href="http://jonathan-boyer.fr/culture" class="">Culture</a>
+          <a href="http://jonathan-boyer.fr/contact" class="">Contact</a>
+        </nav>
+      </header>
+
+      <h1>Zoombox</h1>
+      <span class="subtitle">Another jquery lightbox</span>
+
+      <nav class="secondary">
+        <a href="index.html">Home</a>
+        <a href="howto.html" class="active">How to use</a>
+        <a href="api.html">API &amp; Options</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+
+      <div class="grid12">
+        <h2 class="title">1 - Include JS Files</h2>
+            <p>Zoombox uses 2 different Javascript scripts that you will have to import in this exact same order (in <code>&lt;head&gt;</code> or just before <code>&lt;/body&gt;</code>)</p>
+            <pre name="code" class="php">
+                &lt;script type=&quot;text/javascript&quot; src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+                &lt;script type=&quot;text/javascript&quot; src=&quot;/zoombox/zoombox.js&quot;&gt;&lt;/script&gt;
+            </pre>
+
+
+            <h2 class="title">2 - Link the CSS file to your page in the <code>&lt;head&gt;</code></h2>
+            <pre name="code" class="php">
+        &lt;link href=&quot;/zoombox/zoombox.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;screen&quot; /&gt;
+            </pre>
+
+            <h2 class="title">3 -Fire plugin using jQuery Selector</h2>
+            <p>For instance if you want to bind zoombox behaviour on every link with the "zoombox class" : </p>
+
+            <pre name="code" class="php">
+        &lt;script type="text/javascript">
+        jQuery(function($){
+            $('a.zoombox').zoombox();
+
+            /**
+            * Or You can also use specific options
+            $('a.zoombox').zoombox({
+                theme       : 'zoombox',        //available themes : zoombox,lightbox, prettyphoto, darkprettyphoto, simple
+                opacity     : 0.8,              // Black overlay opacity
+                duration    : 800,              // Animation duration
+                animation   : true,             // Do we have to animate the box ?
+                width       : 600,              // Default width
+                height      : 400,              // Default height
+                gallery     : true,             // Allow gallery thumb view
+                autoplay : false                // Autoplay for video
+            });
+            */
+        });
+        &lt;/script>
+            </pre>
+            <p>If you want more info about available options go to the <a href="api.html">API &amp; Options</a></p>
+
+            <h2 class="title">4- One more thing</h2>
+
+            <p>Every links hooked by the jquery selector will open a nice zoombox to display its content.</p>
+            <pre name="code" class="php">
+        /* Classic link */
+        &lt;a href="http://grafikart.fr" class="zoombox">This is my site !&lt;/a>
+
+        /* You can group links into 'galleries' with the keyword zgallery{galleryname} */
+        &lt;a href="Firstlink" class="zoombox zgallery1">Link&lt;/a>
+        &lt;a href="SecondLink" class="zoombox zgallery1">Link&lt;/a>
+        &lt;a href="ThirdLink" class="zoombox zgallery1">Link&lt;/a>
+        &lt;a href="Fourthlink" class="zoombox zgallery1">Link&lt;/a>
+
+        /* You can also specify a with and a height */
+        &lt;a href="VideoLink" class="zoombox w500 h400"/>
+            </pre>
+      </div>
+
+      <a href="https://github.com/Grafikart/CakePHP-Comment"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript" src="zoombox/zoombox.js"></script>
+      <script type="text/javascript">
+        (function($){
+            $('a.zoombox').zoombox();
+        })(jQuery);
+      </script>
+
+</footer>
+</body>
+</html>

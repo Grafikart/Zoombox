@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Zoombox</title>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans|Kreon' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://jonathan-boyer.fr/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="zoombox/zoombox.css" />
+  </head>
+
+
+  <body>
+
+    <div id="root">
+      <header class="header">
+        <a href="http://jonathan-boyer.fr/" class="logo">
+          <img src="http://jonathan-boyer.fr/img/logo.png" alt="" />        </a>
+        <nav>
+          <a href="http://jonathan-boyer.fr/" class="">Accueil</a>
+          <a href="http://jonathan-boyer.fr/portfolio" class="">Portfolio</a>
+          <a href="http://jonathan-boyer.fr/projets" class="active">Projets</a>
+          <a href="http://jonathan-boyer.fr/competences" class="">Compétences</a>
+          <a href="http://jonathan-boyer.fr/culture" class="">Culture</a>
+          <a href="http://jonathan-boyer.fr/contact" class="">Contact</a>
+        </nav>
+      </header>
+
+      <h1>Zoombox</h1>
+      <span class="subtitle">Another jquery lightbox</span>
+
+      <nav class="secondary">
+        <a href="index.html">Home</a>
+        <a href="howto.html">How to use</a>
+        <a href="api.html">API &amp; Options</a>
+        <a href="faq.html" class="active">FAQ</a>
+      </nav>
+
+      <div class="grid12">
+          <h2>Can I use zoombox for commercial projects (e-commerce for example) ? </h2>
+          <p>Yes ! Zoombox can be used for every kind of projects but if you want to sell a template with zoombox in it (on themeforest for example) please inform me, I like to see how people integrate zoombox.</p>
+
+          <h2>Is there any plugin for Wordpress ?</h2>
+          <p>Not now but I'm working on it :)</p>
+      </div>
+
+      <a href="https://github.com/Grafikart/CakePHP-Comment"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript" src="zoombox/zoombox.js"></script>
+      <script type="text/javascript">
+        (function($){
+            $('a.zoombox').zoombox();
+        })(jQuery);
+      </script>
+      <style type="text/css">
+      table{width:100%;margin-bottom:10px}td,th{vertical-align:middle;line-height:18px;padding:5px 3px}tbody td{border:1px solid #D1D1D1;background-color:#EDECEC;vertical-align:middle;color:#505050}tbody tr:nth-child(2n) td{background:#FFFFFF none}th{font-weight: bold; color:#000;}
+       </style>
+</footer>
+</body>
+</html>

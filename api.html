@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Zoombox</title>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans|Kreon' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://jonathan-boyer.fr/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="zoombox/zoombox.css" />
+  </head>
+
+
+  <body>
+
+    <div id="root">
+      <header class="header">
+        <a href="http://jonathan-boyer.fr/" class="logo">
+          <img src="http://jonathan-boyer.fr/img/logo.png" alt="" />        </a>
+        <nav>
+          <a href="http://jonathan-boyer.fr/" class="">Accueil</a>
+          <a href="http://jonathan-boyer.fr/portfolio" class="">Portfolio</a>
+          <a href="http://jonathan-boyer.fr/projets" class="active">Projets</a>
+          <a href="http://jonathan-boyer.fr/competences" class="">Compétences</a>
+          <a href="http://jonathan-boyer.fr/culture" class="">Culture</a>
+          <a href="http://jonathan-boyer.fr/contact" class="">Contact</a>
+        </nav>
+      </header>
+
+      <h1>Zoombox</h1>
+      <span class="subtitle">Another jquery lightbox</span>
+
+      <nav class="secondary">
+        <a href="index.html">Home</a>
+        <a href="howto.html">How to use</a>
+        <a href="api.html" class="active">API &amp; Options</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+
+      <div class="grid12">
+        <h2>Available options</h2>
+        <p>You can pass options as <strong>key/value object</strong> to zoombox() function</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th width="100">Default Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>theme</td>
+                    <td>'zoombox'</td>
+                    <td>Define the theme to use, this will add a specific class to zoombox allowing advanced theming. There is 5 built-in themes : zoombox, lightbox, prettyphoto, darkprettyphoto, simple</td>
+                </tr>
+                <tr>
+                    <td>opacity</td>
+                    <td>0.8</td>
+                    <td>Page overlay opacity</td>
+                </tr>
+                <tr>
+                    <td>duration</td>
+                    <td>800</td>
+                    <td>Zoombox opening animation duration (ms)</td>
+                </tr>
+                <tr>
+                    <td>animation</td>
+                    <td>true</td>
+                    <td>Set it to false if you don't want width/height animation, zoombox will be directly appended to body and displayed</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>600</td>
+                    <td>Default width for videos and iframes (image size is automatically detected)</td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td>400</td>
+                    <td>Default height for videos and iframes (image size is automatically detected)</td>
+                </tr>
+                <tr>
+                    <td>gallery</td>
+                    <td>true</td>
+                    <td>If set to true zoombox will display a gallery of images thumbs</td>
+                </tr>
+                <tr>
+                    <td>autoplay</td>
+                    <td>false</td>
+                    <td>Autoplay video opened with zoombox</td>
+                </tr>
+                <tr>
+                    <td>overflow</td>
+                    <td>false</td>
+                    <td>Allow content to overflow the screen (if set to false width and height will be redefined to fit the user window)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Public methods</h2>
+
+        <p>If you want to go further with zoombox and use it in your own scrips</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$.zoombox.close()</td>
+                    <td>Close zoombox <br/><em><span class="petit">if you want to close zoombox within an iframe call parent.$.zoombox.close() </span></em></td>
+                </tr>
+                <tr>
+                    <td>$.zoombox.open(link,options)</td>
+                    <td>Open <strong>link</strong> using zoombox</td>
+                </tr>
+                <tr>
+                    <td>$.zoombox.html(htmlcontent,options)</td>
+                    <td>Open <strong>htmlcontent</strong> using zoombox. For example you can load Ajax content into zoombox...</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+      <a href="https://github.com/Grafikart/CakePHP-Comment"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript" src="zoombox/zoombox.js"></script>
+      <script type="text/javascript">
+        (function($){
+            $('a.zoombox').zoombox();
+        })(jQuery);
+      </script>
+      <style type="text/css">
+      table{width:100%;margin-bottom:10px}td,th{vertical-align:middle;line-height:18px;padding:5px 3px}tbody td{border:1px solid #D1D1D1;background-color:#EDECEC;vertical-align:middle;color:#505050}tbody tr:nth-child(2n) td{background:#FFFFFF none}th{font-weight: bold; color:#000;}
+       </style>
+</footer>
+</body>
+</html>
