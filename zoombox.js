@@ -90,22 +90,32 @@ $.fn.zoombox = function(opts){
         }
         var obj = this;
         var galleryRegExp =  /zgallery([0-9]+)/;
+        var skipRegExp =  /zskip/;
         var gallery = galleryRegExp.exec($(this).attr("class"));
+        var skip = skipRegExp.exec($(this).attr("class"));
         var tmpimageset = false;
         if(gallery != null){
             if(!images[gallery[1]]){
                 images[gallery[1]]=new Array();
             }
-            images[gallery[1]].push($(this));
+            if (skip == null) {
+                images[gallery[1]].push($(this));
+            }
             var pos = images[gallery[1]].length-1;
             tmpimageset = images[gallery[1]];
         }
         $(this).unbind('click').click(function(){
             options = $.extend({},$.zoombox.options,opts);
             if(state!='closed') return false;
-            elem = $(obj);
-            link = elem.attr('href');
+            if (skip != null) {
+                if (pos < images[gallery[1]].length-1) {
+                    elem = images[gallery[1]][pos+1];
+                }
+            } else {   
+                elem = $(obj);
+            }
             imageset = tmpimageset;
+            link = elem.attr('href');
             position = pos;
             load();
             return false;
