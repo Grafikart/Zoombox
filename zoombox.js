@@ -85,9 +85,10 @@ $.fn.zoombox = function(opts){
      */
     return this.each(function(){
         // No zoombox for IE6
+        /*
         if($.browser.msie && $.browser.version < 7 && !window.XMLHttpRequest){
             return false;
-        }
+        }*/
         var obj = this;
         var galleryRegExp =  /zgallery([0-9]+)/;
         var gallery = galleryRegExp.exec($(this).attr("class"));
