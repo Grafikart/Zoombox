@@ -85,7 +85,7 @@ $.fn.zoombox = function(opts){
      */
     return this.each(function(){
         // No zoombox for IE6
-        if($.browser.msie && $.browser.version < 7 && !window.XMLHttpRequest){
+        if($.browser && $.browser.msie && $.browser.version < 7 && !window.XMLHttpRequest){
             return false;
         }
         var obj = this;
