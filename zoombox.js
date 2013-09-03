@@ -53,7 +53,7 @@ var filtreDailymotion=	/(http:\/\/www.dailymotion)|(http:\/\/dailymotion)/i;
 var filtreVimeo=		/(http:\/\/www.vimeo)|(http:\/\/vimeo)/i;
 var filtreYoutube=		/(youtube\.)/i;
 var filtreKoreus=		/(http:\/\/www\.koreus)|(http:\/\/koreus)/i;
-var galleryLoaded = 0; 
+var galleryLoaded = 0;
 
 $.zoombox = function(el,options) {
 
@@ -76,16 +76,16 @@ $.zoombox.html = function(cont,opts){
     elem = null;
     open();
 }
-$.fn.zoombox = function(opts){  
+$.fn.zoombox = function(opts){
 
-    images = new Array(); // allow multiple call on one page, for content loaded from ajax  
-    
+    images = new Array(); // allow multiple call on one page, for content loaded from ajax
+
     /**
      * Bind the behaviour on every Elements
      */
     return this.each(function(){
         // No zoombox for IE6
-        if($.browser.msie && $.browser.version < 7 && !window.XMLHttpRequest){
+        if($.browser && $.browser.msie && $.browser.version < 7 && !window.XMLHttpRequest){
             return false;
         }
         var obj = this;
@@ -171,12 +171,12 @@ function build(){
 function gallery(){
     var loaded = 0;
     var width = 0;
-    var contentWidth = 0;   
+    var contentWidth = 0;
     if(options.gallery){
         if(imageset === false){
-            $('#zoombox .zoombox_gallery').remove(); 
+            $('#zoombox .zoombox_gallery').remove();
             return false;
-        } 
+        }
         for(var i in imageset){
             var imgSrc = zoombox_path+'img/video.png';
             var img = $('<img src="'+imgSrc+'" class="video gallery'+(i*1)+'"/>');
@@ -198,10 +198,10 @@ function gallery(){
                     var img = $(this).data('img');
                     img.width(Math.round(img.height() * this.width/this.height));
                     if(loaded == $('#zoombox .zoombox_gallery img').length){
-                        var width = 0; 
+                        var width = 0;
                         $('#zoombox .zoombox_gallery img').each(function(){
-                            width += $(this).outerWidth(); 
-                            $(this).data('left',width); 
+                            width += $(this).outerWidth();
+                            $(this).data('left',width);
                         });
                         var div = $('<div>').css({
                             position:'absolute',
@@ -209,21 +209,21 @@ function gallery(){
                             left:0,
                             width: width
                         });
-                        $('#zoombox .zoombox_gallery').wrapInner(div); 
-                        contentWidth = $('#zoombox .zoombox_gallery').width(); 
-                        $('#zoombox').trigger('change'); 
+                        $('#zoombox .zoombox_gallery').wrapInner(div);
+                        contentWidth = $('#zoombox .zoombox_gallery').width();
+                        $('#zoombox').trigger('change');
                     }
                 });
         }
         $('#zoombox .zoombox_gallery').show().animate({bottom:0},options.duration);
     }
-    
+
     $('#zoombox').bind('change',function(e,css){
         if($('#zoombox .zoombox_gallery div').width() < $('#zoombox .zoombox_gallery').width){
             return true;
         }
         var d = 0;
-        var center = 0; 
+        var center = 0;
         if(css != null){
             d = options.duration;
             center = css.width / 2;
@@ -235,7 +235,7 @@ function gallery(){
         if(left < center * 2 - $('#zoombox .zoombox_gallery div').width() ){
             left = center * 2 - $('#zoombox .zoombox_gallery div').width();
         }
-        if(left > 0){ 
+        if(left > 0){
             left = 0;
         }
         $('#zoombox .zoombox_gallery div').animate({left:left},d);
@@ -303,12 +303,12 @@ function open(){
     };
 
     // Trigger the change event
-    $('#zoombox').trigger('change',css); 
+    $('#zoombox').trigger('change',css);
 
     // Do we animate or not ?
     if(options.animation == true){
         $('#zoombox .zoombox_title').hide();
-        $('#zoombox .zoombox_close').hide(); 
+        $('#zoombox .zoombox_close').hide();
         $('#zoombox .zoombox_container').animate(css,options.duration,function(){
             if(type == 'multimedia' || isOpen == true){
                 $('#zoombox .zoombox_content').append(content);
@@ -346,7 +346,7 @@ function close(){
     state = 'closing';
     window.clearInterval(timer);
     $(window).unbind('keydown');
-    $(window).unbind('resize'); 
+    $(window).unbind('resize');
     if(type == 'multimedia'){
         $('#zoombox .zoombox_container').empty();
     }
@@ -385,12 +385,12 @@ function close(){
         $('#zoombox .zoombox_container').animate(css,options.duration,function(){
             $('#zoombox').remove();
             state = 'closed';
-			isOpen = false; 
+			isOpen = false;
         });
     }else{
         $('#zoombox').remove();
         state = 'closed';
-		isOpen = false; 
+		isOpen = false;
     }
 }
 
@@ -405,7 +405,7 @@ function setContent(){
             width = windowW() - 50;
         }
         if(height*1 + 50 > windowH()){
-            width = (windowH()-50) * width / height; 
+            width = (windowH()-50) * width / height;
             height = windowH() - 50;
         }
     }
@@ -421,7 +421,7 @@ function setContent(){
         content+='<param name="movie" value="'+MP3Player+'?son='+url+'" /></object>';
     }else if(filtreFLV.test(url)){
         var autostart = 0;
-        if(options.autoplay==true){ autostart = 1; } 
+        if(options.autoplay==true){ autostart = 1; }
         content='<object type="application/x-shockwave-flash" data="'+zoombox_path+'FLVplayer.swf" width="'+width+'" height="'+height+'">\
 <param name="allowFullScreen" value="true">\
 <param name="scale" value="noscale">\
@@ -490,14 +490,16 @@ function loadImg(img){
 
 function gotoSlide(i){
     if(state != 'opened'){ return false; }
-    position = i;
-    elem = imageset[position];
-    link = elem.attr('href');
-    if($('#zoombox .zoombox_gallery img').length > 0){
-        $('#zoombox .zoombox_gallery img').removeClass('current');
-        $('#zoombox .zoombox_gallery img:eq('+i+')').addClass('current');
+    if (imageset) {
+        position = i;
+        elem = imageset[position];
+        link = elem.attr('href');
+        if($('#zoombox .zoombox_gallery img').length > 0){
+            $('#zoombox .zoombox_gallery img').removeClass('current');
+            $('#zoombox .zoombox_gallery img:eq('+i+')').addClass('current');
+        }
+        load();
     }
-    load();
     return false;
 }
 
