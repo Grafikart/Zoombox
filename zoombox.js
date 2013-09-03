@@ -490,14 +490,16 @@ function loadImg(img){
 
 function gotoSlide(i){
     if(state != 'opened'){ return false; }
-    position = i;
-    elem = imageset[position];
-    link = elem.attr('href');
-    if($('#zoombox .zoombox_gallery img').length > 0){
-        $('#zoombox .zoombox_gallery img').removeClass('current');
-        $('#zoombox .zoombox_gallery img:eq('+i+')').addClass('current');
+    if (imageset) {
+        position = i;
+        elem = imageset[position];
+        link = elem.attr('href');
+        if($('#zoombox .zoombox_gallery img').length > 0){
+            $('#zoombox .zoombox_gallery img').removeClass('current');
+            $('#zoombox .zoombox_gallery img:eq('+i+')').addClass('current');
+        }
+        load();
     }
-    load();
     return false;
 }
 
