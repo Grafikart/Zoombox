@@ -6,14 +6,14 @@
 	background-color:#000;
 	position:fixed;
 	width:100%;
-	z-index:90;
+	z-index:1051;
 	height:100%;
 	top:0;
 	left:0;
 }
 #zoombox .zoombox_container{
 	position:absolute;
-	z-index:100;
+	z-index:1052;
 }
 #zoombox .relative{
 	position:relative;
@@ -65,7 +65,7 @@
 }
 #zoombox .zoombox_gallery{
 	position:fixed;
-	z-index:120;
+	z-index:1054;
 	bottom:-60px;
 	left:0;
 	right:0;
@@ -107,7 +107,7 @@
 	top:50%;
 	left:50%;
 	margin:-20px 0 0 -20px;
-	z-index:110;
+	z-index:1053;
 }
 /** Zoombox Theme **/
 .zoombox .zoombox_container{
