@@ -1,6 +1,6 @@
 /*[fmt]0A90-0A0A-2*/
 #zoombox iframe,#zoombox img{
-	border:none;
+	border:yes;
 }
 #zoombox .zoombox_mask{
 	background-color:#000;
