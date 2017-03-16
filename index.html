@@ -5,10 +5,8 @@
         <meta name="viewport" content="width=device-width" /> 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"http://grafikart.fr/> 
         <title>Zoombox | Grafikart.fr</title> 
-        <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Droid+Sans:400,700' rel='stylesheet' type='text/css'> 
-        <link rel="stylesheet" type="text/css" href="http://grafikart.fr/css/style.css?v=21082011" />        
-        <link rel="stylesheet" type="text/css" href="zoombox.css" /><link rel="stylesheet" type="text/css" href="http://grafikart.fr/css/zoombox.css" /> 
-
+        <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Droid+Sans:400,700' rel='stylesheet' type='text/css'>      
+        <link rel="stylesheet" type="text/css" href="zoombox.css"/>
     </head> 
     <body id="zoomboxc" class="white"> 
         <div class="header" id="header"> 
@@ -45,13 +43,13 @@
     <h1 style="border:none; font-size:26px;">What the fuck is Zoombox ?</h1>
         <p>Zoombox is an easy to use jquery modul that allows you to display images, html content and multi media content with a "lightbox" that floats over your web ppage.</p>
         <p><strong>Quick example : </strong></p>
-                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.fr/img/zoombox/ratons/raton1.jpg"><img src="http://grafikart.fr/img/zoombox/ratons/min_raton1.jpg" class="bordered" alt="" /></a>
+                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.github.io/Zoombox/img/ratons/raton1.jpg"><img src="http://grafikart.github.io/Zoombox/img/ratons/min_raton1.jpg" class="bordered" alt="" /></a>
             &nbsp; &nbsp;
-                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.fr/img/zoombox/ratons/raton2.jpg"><img src="http://grafikart.fr/img/zoombox/ratons/min_raton2.jpg" class="bordered" alt="" /></a>
+                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.github.io/Zoombox/img/ratons/raton2.jpg"><img src="http://grafikart.github.io/Zoombox/img/ratons/min_raton2.jpg" class="bordered" alt="" /></a>
             &nbsp; &nbsp;
-                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.fr/img/zoombox/ratons/raton3.jpg"><img src="http://grafikart.fr/img/zoombox/ratons/min_raton3.jpg" class="bordered" alt="" /></a>
+                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.github.io/Zoombox/img/ratons/raton3.jpg"><img src="http://grafikart.github.io/Zoombox/img/ratons/min_raton3.jpg" class="bordered" alt="" /></a>
             &nbsp; &nbsp;
-                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.fr/img/zoombox/ratons/raton4.jpg"><img src="http://grafikart.fr/img/zoombox/ratons/min_raton4.jpg" class="bordered" alt="" /></a>
+                    <a class="zoombox zgallery1" title="This is a racoon" href="http://grafikart.github.io/Zoombox/img/ratons/raton4.jpg"><img src="http://grafikart.github.io/Zoombox/img/ratons/min_raton4.jpg" class="bordered" alt="" /></a>
             &nbsp; &nbsp;
                     <br/><br/>
         <p>
@@ -159,19 +157,15 @@
     <div class="cb"></div>
     </div>
 </div>  
-    
-        
-                        
-                        
-    </body> 
-    
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
-    <script type="text/javascript" src="http://grafikart.fr/js/main.js"></script>    <script type="text/javascript" src="zoombox.js"></script> 
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="zoombox.js"></script> 
     <script type="text/javascript"> 
-//<![CDATA[
-    $(function(){
-        $('a.zoombox').zoombox();
-    });
-//]]>
-</script>    
+    //<![CDATA[
+        $(function(){
+            $('a.zoombox').zoombox();
+        });
+    //]]>
+    </script>             
+    </body>     
 </html>

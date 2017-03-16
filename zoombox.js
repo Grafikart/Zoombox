@@ -104,7 +104,7 @@ $.fn.zoombox = function(opts){
             var pos = images[gallery[1]].length-1;
             tmpimageset = images[gallery[1]];
         }
-        $(this).unbind('click').click(function(){
+        $(this).unbind('click').on( "click", function() {
             options = $.extend({},$.zoombox.options,opts);
             if(state!='closed') return false;
             if (skip != null) {
@@ -158,7 +158,7 @@ function build(){
     // We add a specific class to define the box theme
     $('#zoombox').addClass(options.theme);
     // We bind the close behaviour (click on the mask / click on the close button)
-    $('#zoombox .zoombox_mask,.zoombox_close').click(function(){
+    $('#zoombox .zoombox_mask,.zoombox_close').on( "click", function() {
         close();
         return false;
     });
@@ -166,10 +166,10 @@ function build(){
     if(imageset == false){
         $('#zoombox .zoombox_next,#zoombox .zoombox_prev').remove();
     }else{
-        $('#zoombox .zoombox_next').click(function(){
+        $('#zoombox .zoombox_next').on( "click", function() {
             next();
         });
-        $('#zoombox .zoombox_prev').click(function(){
+        $('#zoombox .zoombox_prev').on( "click", function() {
             prev();
         });
     }
@@ -195,7 +195,7 @@ function gallery(){
                img = $('<img src="'+imgSrc+'" class="gallery'+(i*1)+'"/>');
             }
             img.data('id',i).appendTo('#zoombox .zoombox_gallery')
-            img.click(function(){
+            img.on( "click", function() {
                gotoSlide($(this).data('id'));
                $('#zoombox .zoombox_gallery img').removeClass('current');
                $(this).addClass('current');
@@ -203,7 +203,7 @@ function gallery(){
             if(i==position){ img.addClass('current'); }
 
             // Listen the loading of Images
-            $("<img/>").data('img',img).attr("src", imgSrc).load(function() {
+            $("<img/>").data('img',img).attr("src", imgSrc).on("load", function() {
                     loaded++;
                     var img = $(this).data('img');
                     img.width(Math.round(img.height() * this.width/this.height));
