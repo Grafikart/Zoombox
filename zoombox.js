@@ -203,7 +203,7 @@ function gallery(){
             if(i==position){ img.addClass('current'); }
 
             // Listen the loading of Images
-            $("<img/>").data('img',img).attr("src", imgSrc).load(function() {
+            $("<img/>").data('img',img).attr("src", imgSrc).on('load', function() {
                     loaded++;
                     var img = $(this).data('img');
                     img.width(Math.round(img.height() * this.width/this.height));
